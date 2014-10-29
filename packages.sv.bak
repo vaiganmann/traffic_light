@@ -1,0 +1,11 @@
+`ifndef DEFS_PACK // if the already-compiled flag is not set...
+  `define DEFS_PACK // set the flag
+ 
+package definitions;
+ 
+typedef enum {GETINSTR, RST, MV, ADD, SUB, MVI/*, ROUT[0:7]*/} states;
+typedef enum  logic [2:0] {MV_INSTR = 3'b000, ADD_INSTR = 3'b001, SUB_INSTR = 3'b010, MVI_INSTR = 3'b011} instr;
+  
+endpackage
+  
+`endif
