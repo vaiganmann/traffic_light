@@ -1,1 +1,9 @@
+D:/altera/traffic_light/main.sv {1 {vlog -work work -vopt -sv D:/altera/traffic_light/main.sv
+Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+-- Compiling module main
+-- Compiling module testbench
 
+Top level modules:
+	testbench
+
+} {} {}}
