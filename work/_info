@@ -3,45 +3,66 @@ K3
 13
 cModel Technology
 dD:\altera\serializer
-vmain
+vcounter
 Z0 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
-VAP^<LB9D=VRkaFlgDGe@h2
+VTe09zgS==Wcg5OL[[GgP93
 r1
 !s85 0
 31
-I7k2b5ACK]ESGe@B5m>I_M3
-Z1 !s105 main_sv_unit
+I3NK<=SWnln2`SDjgXPP;C2
 S1
-Z2 dD:\altera\traffic_light
-Z3 w1414598754
-Z4 8D:/altera/traffic_light/main.sv
-Z5 FD:/altera/traffic_light/main.sv
-L0 2
-Z6 OL;L;10.1c;51
-Z7 !s108 1414598761.868000
-Z8 !s107 D:/altera/traffic_light/main.sv|
-Z9 !s90 -reportprogress|300|-work|work|-vopt|-sv|D:/altera/traffic_light/main.sv|
-Z10 o-work work -sv -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+Z1 dD:\altera\traffic_light
+w1414697374
+8D:/altera/traffic_light/counter.sv
+FD:/altera/traffic_light/counter.sv
+L0 3
+Z2 OL;L;10.1c;51
+Z3 o-work work -sv -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
 !i10b 1
-!s100 B3OmR[4VFdl1Y6V50O17V0
+!s100 J[lL^8ef[na6Slk9aTEf41
+!s105 counter_sv_unit
+!s108 1414699578.798000
+!s107 D:/altera/traffic_light/counter.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|D:/altera/traffic_light/counter.sv|
 vtestbench
-Z11 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
+Z4 DXx6 sv_std 3 std 0 22 F[19LRNL:5;XmIFh[XOPn1
 VhGfW:390DM[oDMzegDH9`2
 r1
 31
-Imd;QVgXXlj6fU4Yn[J]kL1
-R1
+I=jn[Y1MeI0>P6=>V2ND]z3
+Z5 !s105 main_sv_unit
 S1
+R1
+Z6 w1414699554
+Z7 8D:/altera/traffic_light/main.sv
+Z8 FD:/altera/traffic_light/main.sv
+L0 124
 R2
+Z9 !s108 1414699577.989000
+Z10 !s107 counter.sv|D:/altera/traffic_light/main.sv|
+Z11 !s90 -reportprogress|300|-work|work|-vopt|-sv|D:/altera/traffic_light/main.sv|
 R3
+!s85 0
+!s100 bPcbTlYUH7k0c?WfCGB>>1
+!i10b 1
+vtraffic_light
 R4
+V6119m9eGYG7GaKJH1zj4e2
+r1
+31
+IJN7TSV4kI>fj45<_@[=i00
 R5
-L0 111
+S1
+R1
 R6
 R7
 R8
+L0 4
+R2
 R9
 R10
+R11
+R3
 !s85 0
-!s100 0V>8zm[;BM=Gg;VbncD;?2
+!s100 `K3JHm<aA;CkkB:EbFXFN1
 !i10b 1

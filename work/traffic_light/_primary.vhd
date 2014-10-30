@@ -1,6 +1,6 @@
 library verilog;
 use verilog.vl_types.all;
-entity main is
+entity traffic_light is
     generic(
         period_red      : integer := 3;
         period_yellow_red: integer := 3;
@@ -21,4 +21,4 @@ entity main is
     attribute mti_svvh_generic_type of period_yellow : constant is 1;
     attribute mti_svvh_generic_type of period_blinky_green : constant is 1;
     attribute mti_svvh_generic_type of period_green : constant is 1;
-end main;
+end traffic_light;

@@ -1,0 +1,64 @@
+# Current time Thu Oct 30 22:50:50 2014
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.1c"
+# Version = "2012.07"
+# Date = "Jul 28 2012"
+# Platform = win64
+
+Exception c0000005 has occurred at address 102b2569. Traceback:
+# 0    0x102b2569: 'TkTextCreateDInfo + 0x1149'
+# 1    0x0f397110: '<unknown (@0xf397110)>'
+# 2    0xc004072a: '<unknown (@0xc004072a)>'
+# 3    0xc004072a: '<unknown (@0xc004072a)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Thu Oct 30 22:50:51 2014
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.1c"
+# Version = "2012.07"
+# Date = "Jul 28 2012"
+# Platform = win64
+
+Exception c0000005 has occurred at address 102b2569. Traceback:
+# 0    0x102b2569: 'TkTextCreateDInfo + 0x1149'
+# 1    0x0f397110: '<unknown (@0xf397110)>'
+# 2    0xae041740: '<unknown (@0xae041740)>'
+# 3    0xae041740: '<unknown (@0xae041740)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Thu Oct 30 22:50:51 2014
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.1c"
+# Version = "2012.07"
+# Date = "Jul 28 2012"
+# Platform = win64
+
+Exception c0000005 has occurred at address 102b2569. Traceback:
+# 0    0x102b2569: 'TkTextCreateDInfo + 0x1149'
+# 1    0x0f397110: '<unknown (@0xf397110)>'
+# 2    0xae041740: '<unknown (@0xae041740)>'
+# 3    0xae041740: '<unknown (@0xae041740)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Thu Oct 30 22:50:51 2014
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.1c"
+# Version = "2012.07"
+# Date = "Jul 28 2012"
+# Platform = win64
+
+Exception c0000005 has occurred at address 102b2569. Traceback:
+# 0    0x102b2569: 'TkTextCreateDInfo + 0x1149'
+# 1    0x0f397110: '<unknown (@0xf397110)>'
+# 2    0xae041740: '<unknown (@0xae041740)>'
+# 3    0xae041740: '<unknown (@0xae041740)>'
+StackWalk failed 487
+# End of Stack Trace
+
