@@ -6,127 +6,127 @@ module traffic_light (output bit red_o, yellow_o, green_o,
              );
 
 parameter period_red = 3, period_yellow_red = 3, period_yellow = 3, period_blinky_green = 3, period_green = 3;//number of cloks of a light
-bit [3:0] nr = period_red, nyr = period_yellow_red, ny = period_yellow, nbg = period_blinky_green, ng = period_green;
-bit [3:0] count, max_count ;
-bit start, rst, overflow;
+bit [10:0] nr = period_red, nyr = period_yellow_red, ny = period_yellow, nbg = period_blinky_green, ng = period_green;
+bit [10:0] next_current_count, current_count, count ;
+bit start, rst, overflow, current_green, next_current_green;
 //****************************************************************
 //            Some local defs
 //****************************************************************
-typedef enum {RED, RST, YELLOW_RED, GREEN, BLINKY_GREEN, YELLOW} states;
-states next_state_t = RST , state_t = RST; 
+typedef enum {RST, RED,YELLOW_RED, GREEN, BLINKY_GREEN, YELLOW} states;
+states next_state_t , state_t; 
 
-counter counter_inst(clk_i, rst, start, count, max_count ,overflow);
+counter counter_inst(clk_i, rst_i, count, current_count , overflow);
 
 //****************************************************************
 //            Finite State machine 
 //****************************************************************
-  
-    //else begin 
-    //  state_t <= next_state_t;
-    // end
-//end
-
-
-//always_latch begin: next_state_machine
 always_ff @(posedge clk_i or posedge rst_i) begin
-  if (rst_i) state_t <= RST; 
-   else 
+    if (rst_i) begin
+       state_t <= RST;
+       current_count <= nr-1;
+       current_green <= 0;
+    end
+      else begin
+        state_t <= next_state_t;
+        current_count <= next_current_count;
+        current_green <= next_current_green;
+      end
+end
+
+always_comb begin : set_next_state 
+ 
+next_state_t = state_t;
+next_current_count = current_count;
+
      unique case(state_t)
       RST: begin
-            state_t <= RED; 
+            next_state_t = RED; 
+            next_current_count = nr-1;
            end
       RED: begin      
-            if (!overflow)begin
-              red_o <= 1;
-              start <= 1;
-              rst <= 0;
-              max_count <= nr-2;
-             end
-             else
-                  begin
-                    state_t <= YELLOW_RED;
-                    red_o <= 0;
-                    start <= 0;
-                    rst <= 1;
-                  end
+            if (overflow)
+              begin
+                next_current_count = nyr-1;
+                next_state_t = YELLOW_RED;
+              end
             end        
       YELLOW_RED: begin              
-              if (!overflow)
+              if (overflow)
                  begin
-                    max_count <= nyr-2;
-                   	rst <= 0; 
-				            start <= 1;
-                    red_o <= 1;
-                    yellow_o <= 1;
-                  end 
-               else
-                  begin
-                    state_t <= GREEN;
-                    red_o <= 0;
-                    yellow_o <= 0;
-                    start <= 0;
-                    rst <= 1;                   
-                  end 
-              end
-      GREEN: begin
-              
-              if (!overflow)begin
-                rst <= 0; 
-				        start <= 1;
-				        max_count <= ng-2; 
-                green_o <= 1;
-              end
-              else
-                   begin
-                    state_t <= BLINKY_GREEN;
-                    green_o <= 0; 
-                    start <= 0;
-                    rst <= 1;
-                   end 
+                    next_current_count = ng-1;
+                    next_state_t = GREEN;
+                 end
+               end
+      GREEN: begin             
+              if (overflow)
+                begin
+				          next_current_count = nbg-1;
+				          next_state_t = BLINKY_GREEN; 
+                end
               end
       BLINKY_GREEN: begin
-               if (!overflow) begin
-                green_o <= ~green_o;
-                rst <= 0; 
-				        start <= 1;
-				        max_count <= nbg-2;
+               if (overflow) 
+                  begin
+                    next_state_t =  YELLOW;
+				            next_current_count = ny-1;
                 end
-               else
-                   begin
-                    green_o <= 0;
-                    start <= 0;
-                    rst <= 1;
-                    state_t <=  YELLOW;
-                   end 
                end
       YELLOW: begin
-                if (!overflow) begin
-                  yellow_o <= 1;
-                  rst <= 0; 
-				          start <= 1;
-				          max_count <= ny-2;
+                if (overflow) begin
+				          next_current_count = nr-1;
+				          next_state_t =  RED;
                 end
-                else
-                   begin
-                    state_t <=  RED;
-					          yellow_o <= 0;
-                    start <= 0;
-                    rst <= 1; 
-                   end 
               end 
     endcase 
-  end
+end:set_next_state
 
-    
+always_comb begin:set_outputs
+next_current_green = current_green;
+ {red_o, green_o, yellow_o} = 3'b000;
+     unique case(state_t)
+      RED:
+        begin      
+           red_o = 1;
+        end      
+      YELLOW_RED:
+        begin              
+            red_o = 1;
+            yellow_o = 1;
+        end
+      GREEN: 
+        begin
+             green_o = 1;
+        end
+      BLINKY_GREEN: 
+        begin
+            if(!current_green)
+                begin
+                 green_o = 1;
+                 next_current_green = 1;
+                end
+            else
+              begin
+                green_o = 0;
+                next_current_green = 0;
+              end
+        end      
+      YELLOW:
+       begin
+             yellow_o = 1;
+       end 
+    endcase 
+end:set_outputs
 endmodule 
 
 
 module testbench;
-logic clk_i, rst_i; 
+bit clk_i, rst_i; 
 bit red_o, yellow_o, green_o;  
 
- traffic_light #(.period_red(4)) DUT(.* , .rst_i(1'b0));
+ traffic_light #(.period_red(20)) DUT(.* , .rst_i(1'b0));
 
+   
+ 
 initial begin clk_i = 1'b0;
 forever #10  clk_i = !clk_i;
 end
